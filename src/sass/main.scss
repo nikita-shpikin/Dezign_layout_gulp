@@ -1,0 +1,12 @@
+$base_color: orange;
+
+body {
+	background: url('../img/joker.png') no-repeat center top olivedrab;
+
+	.title {
+		color: $base_color;
+		font-size: 52px;
+	}
+}
+
+@import './header/*.scss';
