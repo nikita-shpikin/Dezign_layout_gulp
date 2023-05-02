@@ -1,0 +1,6 @@
+@import url('./header/header.css');
+
+.title {
+	color: palevioletred;
+	font-size: 52px;
+}
