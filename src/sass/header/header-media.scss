@@ -1,0 +1,27 @@
+@media screen and (min-width: $breakpoint-sm) {
+	.header {
+		&__logo {
+			height: 4vw;
+		}
+	}
+}
+
+@media screen and (min-width: $breakpoint-md) {
+	.header {
+		&-container {
+			height: 10vw;
+		}
+	}
+}
+
+@media screen and (min-width: $breakpoint-xl) {
+	.header {
+		&-container {
+			height: 5vw;
+		}
+
+		&__logo {
+			height: 48px;
+		}
+	}
+}

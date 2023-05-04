@@ -1,0 +1,12 @@
+@mixin text($fw, $fs, $ls) {
+	font-weight: $fw;
+	font-size: $fs;
+	letter-spacing: $ls;
+	color: $colorText;
+
+	@extend %text;
+}
+
+@mixin button($fw, $fs, $ls) {
+	@extend %text;
+}

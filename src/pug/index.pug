@@ -1,12 +1,6 @@
 extends ./head/head
+include chunk/header
 
 block page
-	include chunk/header
 
-	h1.title Hello PUG
-	img(src="./img/xxx.jpg", alt="xxx", width="400")
-
-
-	//- ul
-	//- 	each item in news
-	//- 		li = item.name
+	+header('logo.svg', ['HOME', 'Work', 'About'])

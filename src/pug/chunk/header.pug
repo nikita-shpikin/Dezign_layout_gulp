@@ -1,1 +1,12 @@
-header.header Header!
+mixin header(logo = 'XXX', arr = [1, 2, 3])
+	header.header
+		.container.header-container
+			a.header__logo(href="#")
+				img.header__img(src='./logo.svg', alt=`logo`)
+			ul.header-list
+				each value in arr 
+					li
+						if(value === 'HOME')
+							a.header__link.header__link_active(href="#") #{value}
+						else 
+							a.header__link(href="#") #{value}

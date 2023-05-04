@@ -1,14 +1,10 @@
 import gulp from 'gulp';
 import GulpPug from 'gulp-pug';
-import gulpFileInclude from 'gulp-file-include';
-import gulpHtmlmin from 'gulp-htmlmin';
 import gulpSize from 'gulp-size';
 import browserSync from 'browser-sync';
 import gulpPlumber from 'gulp-plumber';
 import gulpNotify from 'gulp-notify';
 import { deleteAsync } from 'del';
-import gulpConcat from 'gulp-concat';
-import cssImport from 'gulp-cssimport';
 import autoPrefixer from 'gulp-autoprefixer';
 import cssO from 'gulp-csso';
 import rename from 'gulp-rename';
@@ -34,28 +30,6 @@ const sass = gulpSass(dartSass);
 const isProd = process.argv.includes('--production');
 const isDev = !isProd;
 
-export const getHtml = () => {
-	return gulp
-		.src('./src/*.html')
-		.pipe(
-			gulpPlumber({
-				errorHandler: gulpNotify.onError({
-					errorHandler: gulpNotify.onError(error => ({
-						title: 'HTML',
-						message: error.message,
-					})),
-				}),
-			})
-		)
-		.pipe(gulpFileInclude())
-		.pipe(webpHtml())
-		.pipe(gulpSize({ title: 'ДО' }))
-		.pipe(gulpHtmlmin({ collapseWhitespace: isProd }))
-		.pipe(gulpSize({ title: 'ПОСЛЕ' }))
-		.pipe(gulp.dest('./public'))
-		.pipe(browserSync.stream());
-};
-
 export const pugToHtml = () => {
 	return gulp
 		.src('./src/pug/index.pug')
@@ -69,40 +43,12 @@ export const pugToHtml = () => {
 		)
 		.pipe(
 			GulpPug({
-				pretty: isDev,
-				// data: {
-				// 	news: require('./data/news.json'),
-				// },
+				pretty: true,
 			})
 		)
 		.pipe(webpHtml())
 		.pipe(gulp.dest('./public'))
 		.pipe(browserSync.stream());
-};
-
-export const styleCss = () => {
-	return gulp
-		.src('./src/css/*.css', { sourcemaps: isDev })
-		.pipe(
-			gulpPlumber({
-				errorHandler: gulpNotify.onError(error => ({
-					title: 'CSS',
-					message: error.message,
-				})),
-			})
-		)
-		.pipe(gulpConcat('main.css'))
-		.pipe(cssImport())
-		.pipe(webpCss())
-		.pipe(autoPrefixer())
-		.pipe(shorthand())
-		.pipe(mediaQueries())
-		.pipe(gulpSize({ title: 'MAIN.CSS' }))
-		.pipe(gulp.dest('./public/css', { sourcemaps: isDev }))
-		.pipe(rename({ suffix: '.min' }))
-		.pipe(cssO())
-		.pipe(gulpSize({ title: 'MAIN.MIN.CSS' }))
-		.pipe(gulp.dest('./public/css', { sourcemaps: isDev }));
 };
 
 export const styleSass = () => {
@@ -123,7 +69,7 @@ export const styleSass = () => {
 		.pipe(shorthand())
 		.pipe(mediaQueries())
 		.pipe(gulpSize({ title: 'MAIN.CSS' }))
-		.pipe(gulp.dest('./public/css', { sourcemaps: isDev }))
+		.pipe(gulpIf(isProd, gulp.dest('./public/css', { sourcemaps: isDev })))
 		.pipe(rename({ suffix: '.min' }))
 		.pipe(cssO())
 		.pipe(gulpSize({ title: 'MAIN.MIN.CSS' }))
@@ -132,7 +78,7 @@ export const styleSass = () => {
 
 export const javaScript = () => {
 	return gulp
-		.src('./src/js/main.js', { sourcemaps: isDev })
+		.src('./src/js/main.js', { sourcemaps: isProd })
 		.pipe(
 			gulpPlumber({
 				errorHandler: gulpNotify.onError(error => ({
@@ -142,13 +88,13 @@ export const javaScript = () => {
 			})
 		)
 		.pipe(babel())
-		.pipe(webpackStream({ mode: isProd ? 'development' : 'development' }))
-		.pipe(gulp.dest('./public/js', { sourcemaps: isDev }));
+		.pipe(webpackStream({ mode: isProd ? 'production' : 'development' }))
+		.pipe(gulp.dest('./public/js', { sourcemaps: isProd }));
 };
 
 export const favicon = () => {
 	return gulp
-		.src('./src/img/favicon/favicon.png')
+		.src('./src/img/favicon/logo.svg')
 		.pipe(
 			gulpPlumber({
 				errorHandler: gulpNotify.onError(error => ({
@@ -174,7 +120,9 @@ export const favicon = () => {
 			})
 		)
 		.pipe(gulp.dest('./public/favicons'))
-		.pipe(filter(['favicon.ico', 'apple-touch-icon.png', 'manifest.json']))
+		.pipe(
+			filter(['favicon.svg', 'apple-touch-icon.png', 'manifest.webmanifest'])
+		)
 		.pipe(gulp.dest('./public'));
 };
 
