@@ -1,0 +1,32 @@
+.clients {
+	&-container {
+		padding: 2%;
+
+		display: grid;
+		place-items: center center;
+	}
+
+	&__title {
+		text-align: center;
+		max-width: 60%;
+
+		@include text(300, 20px, 0);
+
+		&_highlight {
+			color: $colorTextHighlight;
+		}
+	}
+
+	&-list {
+		width: 100%;
+		margin-top: 5vh;
+
+		display: grid;
+		grid-template-columns: 35vw;
+		place-items: center;
+		justify-content: center;
+		gap: 5vh;
+	}
+}
+
+@import './clients-media.scss';

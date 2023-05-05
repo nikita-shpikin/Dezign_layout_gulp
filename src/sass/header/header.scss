@@ -1,6 +1,4 @@
 .header {
-	background-color: $colorBackground;
-
 	&-container {
 		height: 20vh;
 		padding: 0 6%;
@@ -37,7 +35,7 @@
 			background-color: $colorTextHighlight;
 			position: absolute;
 			bottom: -10px;
-			left: 33%;
+			left: 40%;
 		}
 		&_active {
 			background: $colorActive;

@@ -1,0 +1,42 @@
+@media screen and (min-width: $breakpoint-sm) {
+	.clients {
+		&__title {
+			font-size: 30px;
+		}
+
+		&-list {
+			grid-template-columns: repeat(2, 30vw);
+		}
+	}
+}
+
+@media screen and (min-width: $breakpoint-md) {
+	.clients {
+		&__title {
+			max-width: 660px;
+		}
+	}
+}
+
+@media screen and (min-width: $breakpoint-lg) {
+	.clients {
+		&-container {
+			padding: 5vw;
+			place-items: baseline;
+		}
+
+		&__title {
+			text-align: left;
+			font-size: 40px;
+		}
+
+		&-list {
+			grid-template-columns: repeat(4, 20%);
+			justify-content: space-between;
+		}
+
+		&__item {
+			justify-self: baseline;
+		}
+	}
+}
