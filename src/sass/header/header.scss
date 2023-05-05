@@ -39,12 +39,11 @@
 			bottom: -10px;
 			left: 33%;
 		}
-	}
-
-	:is(&__link:hover, &__link_active) {
-		background: $colorActive;
-		-webkit-background-clip: text;
-		color: transparent;
+		&_active {
+			background: $colorActive;
+			-webkit-background-clip: text;
+			color: transparent;
+		}
 	}
 }
 

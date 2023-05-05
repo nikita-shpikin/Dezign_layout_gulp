@@ -25,3 +25,13 @@
 		}
 	}
 }
+
+@media (hover: hover) {
+	.header {
+		&__link:hover {
+			background: $colorActive;
+			-webkit-background-clip: text;
+			color: transparent;
+		}
+	}
+}
