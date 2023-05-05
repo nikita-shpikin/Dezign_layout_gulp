@@ -1,0 +1,28 @@
+.about {
+	background: $colorBackground;
+
+	&-container {
+		height: 80vh;
+		padding: 1vw;
+		padding-bottom: 10vh;
+
+		display: grid;
+		place-items: end center;
+	}
+
+	&__title {
+		text-align: center;
+		@include text(300, 33px, -0.02em);
+
+		&_highlight {
+			color: $colorTextHighlight;
+		}
+	}
+
+	&__btn {
+		cursor: pointer;
+		align-self: self-end;
+	}
+}
+
+@import './about-media.scss';

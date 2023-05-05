@@ -128,7 +128,7 @@ export const favicon = () => {
 
 export const getImage = () => {
 	return gulp
-		.src('./src/img/*.{png,jpg,jpeg,svg,gif}')
+		.src('./src/img/**/*.{png,jpg,jpeg,svg,gif}')
 		.pipe(
 			gulpPlumber({
 				errorHandler: gulpNotify.onError(error => ({
