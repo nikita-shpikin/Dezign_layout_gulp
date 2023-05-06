@@ -1,5 +1,5 @@
 @media screen and (min-width: $breakpoint-sm) {
-	.about {
+	.home {
 		&__title {
 			font-size: 44px;
 		}
@@ -7,7 +7,7 @@
 }
 
 @media screen and (min-width: $breakpoint-md) {
-	.about {
+	.home {
 		&-container {
 			height: calc(700px - 10vh);
 		}
@@ -19,7 +19,7 @@
 }
 
 @media screen and (min-width: $breakpoint-xl) {
-	.about {
+	.home {
 		&-container {
 			height: calc(700px - 6vh);
 		}

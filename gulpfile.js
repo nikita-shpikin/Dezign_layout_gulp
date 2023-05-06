@@ -31,24 +31,26 @@ const isProd = process.argv.includes('--production');
 const isDev = !isProd;
 
 export const pugToHtml = () => {
-	return gulp
-		.src('./src/pug/index.pug')
-		.pipe(
-			gulpPlumber({
-				errorHandler: gulpNotify.onError(error => ({
-					title: 'PUG',
-					message: error.message,
-				})),
-			})
-		)
-		.pipe(
-			GulpPug({
-				pretty: true,
-			})
-		)
-		.pipe(webpHtml())
-		.pipe(gulp.dest('./public'))
-		.pipe(browserSync.stream());
+	return (
+		gulp
+			.src('./src/pug/index.pug')
+			.pipe(
+				gulpPlumber({
+					errorHandler: gulpNotify.onError(error => ({
+						title: 'PUG',
+						message: error.message,
+					})),
+				})
+			)
+			.pipe(
+				GulpPug({
+					pretty: true,
+				})
+			)
+			// .pipe(webpHtml())
+			.pipe(gulp.dest('./public'))
+			.pipe(browserSync.stream())
+	);
 };
 
 export const styleSass = () => {
@@ -127,23 +129,25 @@ export const favicon = () => {
 };
 
 export const getImage = () => {
-	return gulp
-		.src('./src/img/**/*.{png,jpg,jpeg,svg,gif}')
-		.pipe(
-			gulpPlumber({
-				errorHandler: gulpNotify.onError(error => ({
-					title: 'IMAGES',
-					message: error.message,
-				})),
-			})
-		)
-		.pipe(newer('/img'))
-		.pipe(webp())
-		.pipe(gulp.dest('./public/img'))
-		.pipe(gulp.src('./src/img/*.{png,jpg,jpeg,svg,gif}'))
-		.pipe(newer('/img'))
-		.pipe(gulpIf(isProd, imagemin()))
-		.pipe(gulp.dest('./public/img'));
+	return (
+		gulp
+			.src('./src/img/**/*.{png,jpg,jpeg,svg,gif}')
+			.pipe(
+				gulpPlumber({
+					errorHandler: gulpNotify.onError(error => ({
+						title: 'IMAGES',
+						message: error.message,
+					})),
+				})
+			)
+			.pipe(newer('/img'))
+			// .pipe(webp())
+			// .pipe(gulp.dest('./public/img'))
+			// .pipe(gulp.src('./src/img/*.{png,jpg,jpeg,svg,gif}'))
+			// .pipe(newer('/img'))
+			.pipe(gulpIf(isProd, imagemin()))
+			.pipe(gulp.dest('./public/img'))
+	);
 };
 
 export const getFont = () => {

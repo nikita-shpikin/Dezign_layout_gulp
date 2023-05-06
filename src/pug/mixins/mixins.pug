@@ -1,0 +1,9 @@
+mixin work(img, h3, h4, flex)
+	.works-content(class=`${flex}`)
+		img.works__img(src=`./img/${img}`, alt="work")
+		.works-text
+			h3.works__title3 #{h3}
+			p.works__text Lorem ipsum dolor sit amet, consectetur #[span.works__text_highlight adipiscing elit. Ultrices lorem non feugiat egestas amet.]
+			h4.works__title4 #{h4}
+			button.works__btn View work
+				img.works__btn-img(src="./img/svg/arrow_right.svg", alt="arrow")

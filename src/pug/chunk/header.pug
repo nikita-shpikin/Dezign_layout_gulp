@@ -1,9 +1,9 @@
-mixin header(logo = 'XXX', arr = [1, 2, 3])
+mixin header(logo = 'logo', arr = [1, 2, 3])
 	header.header
 		.container.header-container
 			a.header__logo(href="#")
-				img(src='./logo.svg', alt=`logo`)
-			ul.header-list
+				img(src=`./${logo}`, alt=`logo`)
+			menu.header-list
 				each value in arr 
 					li
 						if(value === 'HOME')

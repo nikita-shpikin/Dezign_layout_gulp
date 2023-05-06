@@ -7,6 +7,9 @@
 	@extend %text;
 }
 
-@mixin button($fw, $fs, $ls) {
-	@extend %text;
+@mixin button($fs, $width) {
+	font-size: $fs;
+	width: $width;
+
+	@extend %btn;
 }
