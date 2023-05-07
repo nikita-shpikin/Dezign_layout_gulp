@@ -1,0 +1,50 @@
+.footer {
+	&-container {
+		padding: 4vh;
+
+		display: grid;
+		place-content: center center;
+	}
+
+	&__title {
+		text-align: center;
+
+		@include text(600, 28px, -0.02em);
+	}
+
+	&__subtitle {
+		text-align: center;
+
+		@include text(300, 9px, 0);
+	}
+
+	&-social {
+		padding-top: 4vh;
+
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__img {
+		height: 2vh;
+
+		transition: transform 0.2s 0.1s;
+
+		&:hover {
+			transform: scale(1.2);
+		}
+	}
+
+	&__text {
+		padding-top: 4vh;
+		text-align: center;
+
+		@include text(300, 9px, 0);
+	}
+
+	:is(&__text_highlight, &__title_highlight) {
+		color: $colorTextHighlight;
+	}
+}
+
+@import './footer-media.scss';
