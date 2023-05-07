@@ -12,12 +12,14 @@
 	}
 
 	&-content {
-		padding-top: 5vh;
+		padding-top: 10vh;
 	}
 
 	&__title3 {
-		text-transform: uppercase;
 		@include text(600, 8px, 0.04em);
+
+		text-transform: uppercase;
+		color: $colorTextHighlight;
 	}
 
 	&__text {

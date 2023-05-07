@@ -1,0 +1,49 @@
+@media screen and (min-width: $breakpoint-sm) {
+	.about {
+		&__title {
+			text-align: left;
+			font-size: 14px;
+		}
+
+		&__text {
+			font-size: 18px;
+		}
+
+		&-images {
+			grid-template-areas: '. two' 'one two' 'one three' '. three';
+		}
+
+		&__image:nth-child(1) {
+			grid-area: one;
+		}
+
+		&__image:nth-child(2) {
+			grid-area: two;
+		}
+
+		&__image:nth-child(3) {
+			grid-area: three;
+		}
+	}
+}
+
+@media screen and (min-width: $breakpoint-md) {
+	.about {
+		&-container {
+			display: flex;
+			align-items: center;
+			gap: 30px;
+		}
+	}
+}
+
+@media screen and (min-width: $breakpoint-md) {
+	.about {
+		&__title {
+			font-size: 24px;
+		}
+		&__text {
+			font-size: 32px;
+		}
+	}
+}

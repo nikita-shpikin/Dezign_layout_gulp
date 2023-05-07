@@ -1,12 +1,11 @@
-mixin header(logo = 'logo', arr = [1, 2, 3])
-	header.header
-		.container.header-container
-			a.header__logo(href="#")
-				img(src=`./${logo}`, alt=`logo`)
-			menu.header-list
-				each value in arr 
-					li
-						if(value === 'HOME')
-							a.header__link.header__link_active(href="#") #{value}
-						else 
-							a.header__link(href="#") #{value}
+header.header
+	.container.header-container
+		a.header__logo(href="#")
+			img(src=`./logo.svg`, alt=`logo`)
+		menu.header-list
+			each value in ['HOME', 'Work', 'About']
+				li
+					if(value === 'HOME')
+						a.header__link.header__link_active(href="#") #{value}
+					else 
+						a.header__link(href="#") #{value}
