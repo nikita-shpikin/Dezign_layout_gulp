@@ -25,7 +25,6 @@ import ttf2woff2 from 'gulp-ttf2woff2';
 import gulpIf from 'gulp-if';
 import favicons from 'gulp-favicons';
 import filter from 'gulp-filter';
-import ghPages from 'gulp-gh-pages';
 
 const sass = gulpSass(dartSass);
 const isProd = process.argv.includes('--production');
@@ -194,10 +193,6 @@ export const watch = () => {
 	gulp
 		.watch('./src/img/favicon/favicon.png', favicon)
 		.on('all', browserSync.reload);
-};
-
-export const deploy = () => {
-	return gulp.src('./public/**/*').pipe(ghPages());
 };
 
 export const build = gulp.series(
