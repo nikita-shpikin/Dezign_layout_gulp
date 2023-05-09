@@ -16,17 +16,17 @@
   \************************/
 /***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _module_sum_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./module/sum.js */ \"./src/js/module/sum.js\");\n\r\nconsole.log((0,_module_sum_js__WEBPACK_IMPORTED_MODULE_0__.sum)(10, 9));\r\nconsole.log((0,_module_sum_js__WEBPACK_IMPORTED_MODULE_0__.sum)(1, 9));\r\n\n\n//# sourceURL=webpack://dezign_layout_gulp/./src/js/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _module_smoothScroll_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./module/smoothScroll .js */ \"./src/js/module/smoothScroll .js\");\n\r\n(0,_module_smoothScroll_js__WEBPACK_IMPORTED_MODULE_0__.smoothScroll)();\r\n\n\n//# sourceURL=webpack://dezign_layout_gulp/./src/js/main.js?");
 
 /***/ }),
 
-/***/ "./src/js/module/sum.js":
-/*!******************************!*\
-  !*** ./src/js/module/sum.js ***!
-  \******************************/
+/***/ "./src/js/module/smoothScroll .js":
+/*!****************************************!*\
+  !*** ./src/js/module/smoothScroll .js ***!
+  \****************************************/
 /***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"sum\": function() { return /* binding */ sum; }\n/* harmony export */ });\nconst sum = (a, b) => a + b;\r\n\n\n//# sourceURL=webpack://dezign_layout_gulp/./src/js/module/sum.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"smoothScroll\": function() { return /* binding */ smoothScroll; }\n/* harmony export */ });\nfunction smoothScroll() {\r\n\tconst homeBtn = document.querySelector('.home__btn');\r\n\r\n\thomeBtn.addEventListener('click', arrow => {\r\n\t\tarrow.preventDefault();\r\n\r\n\t\tlet blockClients = document.querySelector('.clients');\r\n\r\n\t\tsetTimeout(() => {\r\n\t\t\tscroll(blockClients);\r\n\t\t}, 300);\r\n\t});\r\n\r\n\tconst arrMenu = document.querySelectorAll('.header__link');\r\n\r\n\tarrMenu.forEach(item => {\r\n\t\titem.addEventListener('click', e => {\r\n\t\t\te.preventDefault();\r\n\r\n\t\t\tlet href = e.target.getAttribute('href').substring(1).toLowerCase();\r\n\t\t\tlet sections = document.querySelectorAll('section');\r\n\r\n\t\t\tsections.forEach(section => {\r\n\t\t\t\tif (section.getAttribute('id') == href) {\r\n\t\t\t\t\tscroll(section);\r\n\t\t\t\t}\r\n\t\t\t});\r\n\t\t});\r\n\t});\r\n}\r\n\r\nfunction scroll(e) {\r\n\twindow.scroll({\r\n\t\tleft: 0,\r\n\t\ttop: e.offsetTop,\r\n\t\tbehavior: 'smooth',\r\n\t});\r\n}\r\n\n\n//# sourceURL=webpack://dezign_layout_gulp/./src/js/module/smoothScroll_.js?");
 
 /***/ })
 

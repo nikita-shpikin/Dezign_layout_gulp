@@ -7,5 +7,7 @@ header.header
 				li
 					if(value === 'HOME')
 						a.header__link.header__link_active(href="#") #{value}
-					else 
-						a.header__link(href="#") #{value}
+					if(value === 'Work')
+						a.header__link(href=`#${value}`) #{value}
+					if(value === 'About')
+						a.header__link(href=`#${value}`) #{value}
